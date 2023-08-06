@@ -1,0 +1,40 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int buy = prices[0];
+        int sell = -1;
+        int current = 0;
+        int max = 0;
+        for (int i = 1; i < prices.length; i++)
+        {
+            if (prices[i] < buy)
+            {
+                buy = prices[i];
+                max += current;
+                current = 0;
+                sell = -1;
+            }
+            else
+            {
+                if (prices[i] > sell)
+                {
+                    sell = prices[i];
+                    current = sell - buy;
+                }
+                else
+                {
+                    buy = prices[i];
+                    max += current;
+                    sell = -1;
+                    current = 0;
+                }
+            }
+            //System.out.println(max);
+            //System.out.println(current);
+            //System.out.println(buy);
+            //System.out.println(sell);
+            //System.out.println(" ");
+        }
+        max += current;
+        return max;
+    }
+}
