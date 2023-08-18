@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int current = nums.size() -1;
+        for (int i = current -1 ; i > -1; i --)
+        {
+            if (nums[i] + i >= current)
+            {
+                current = i;
+            }
+        }
+        if (current == 0)
+        {
+            return true;
+        }
+        return false;
+    }
+};
