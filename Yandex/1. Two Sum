@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map <int, int> solution;
+        int res [2] = {0,0};
+        for (int i = 0; i < nums.size(); i++)
+        {
+            int need = target - nums[i];
+            if (solution.contains(need))
+            {
+                return {i, solution[need]};
+            }
+            else 
+            {
+                solution.insert({nums[i],i});
+            }
+            //cout << solution.contains(need) << endl;
+        }
+        return {res[0],res[1]};
+    }
+};
